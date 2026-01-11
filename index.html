@@ -184,55 +184,49 @@
    <div class="fixed bottom-0 right-0 w-96 h-96 rounded-full blur-3xl pulse-glow -z-10" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.3), transparent 70%); animation-delay: 1.5s;"></div>
    <div class="fixed top-1/2 left-1/2 w-96 h-96 rounded-full blur-3xl pulse-glow -z-10" style="background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent 70%); animation-delay: 3s; transform: translate(-50%, -50%);"></div>
    <div class="max-w-6xl mx-auto px-4 py-8 md:py-16"><!-- Hero Section -->
-    <header class="mb-16 md:mb-20"><!-- Top Section with Logo and Video -->
-     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-12 fade-in fade-in-delay-1"><!-- YouTube Style Logo - Left Side -->
-      <div class="flex justify-center lg:justify-end">
-       <div class="float-animation">
-        <div class="relative">
-         <svg width="160" height="110" viewbox="0 0 160 110" fill="none" xmlns="http://www.w3.org/2000/svg"><!-- YouTube rounded rectangle background --> <rect x="10" y="20" width="140" height="70" rx="12" fill="url(#youtube-gradient)" opacity="0.95" /> <rect x="10" y="20" width="140" height="70" rx="12" stroke="url(#glow-gradient)" stroke-width="2" fill="none" opacity="0.6" /> <!-- Play button triangle --> <path d="M65 40 L65 70 L95 55 Z" fill="#ffffff" opacity="0.95" /> <!-- Subtle shine effect --> <path d="M25 30 Q30 25 140 28" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round" opacity="0.4" /> <defs>
-           <lineargradient id="youtube-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#ff0000" />
-            <stop offset="50%" style="stop-color:#cc0000" />
-            <stop offset="100%" style="stop-color:#990000" />
-           </lineargradient>
-           <lineargradient id="glow-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#6366f1" />
-            <stop offset="50%" style="stop-color:#a855f7" />
-            <stop offset="100%" style="stop-color:#ec4899" />
-           </lineargradient>
-          </defs>
-         </svg><!-- Glow effect -->
-         <div class="absolute inset-0 rounded-2xl blur-2xl opacity-40" style="background: radial-gradient(circle, rgba(255, 0, 0, 0.5), transparent);"></div>
+    <header class="mb-12 md:mb-16">
+     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"><!-- Left Column - Text Content -->
+      <div class="order-2 lg:order-1 fade-in fade-in-delay-1"><!-- YouTube Style Logo -->
+       <div class="flex justify-center lg:justify-start mb-8">
+        <div class="float-animation">
+         <div class="relative">
+          <svg width="140" height="100" viewbox="0 0 160 110" fill="none" xmlns="http://www.w3.org/2000/svg"><!-- YouTube rounded rectangle background --> <rect x="10" y="20" width="140" height="70" rx="12" fill="url(#youtube-gradient)" opacity="0.95" /> <rect x="10" y="20" width="140" height="70" rx="12" stroke="url(#glow-gradient)" stroke-width="2" fill="none" opacity="0.6" /> <!-- Play button triangle --> <path d="M65 40 L65 70 L95 55 Z" fill="#ffffff" opacity="0.95" /> <!-- Subtle shine effect --> <path d="M25 30 Q30 25 140 28" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round" opacity="0.4" /> <defs>
+            <lineargradient id="youtube-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+             <stop offset="0%" style="stop-color:#ff0000" />
+             <stop offset="50%" style="stop-color:#cc0000" />
+             <stop offset="100%" style="stop-color:#990000" />
+            </lineargradient>
+            <lineargradient id="glow-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+             <stop offset="0%" style="stop-color:#6366f1" />
+             <stop offset="50%" style="stop-color:#a855f7" />
+             <stop offset="100%" style="stop-color:#ec4899" />
+            </lineargradient>
+           </defs>
+          </svg><!-- Glow effect -->
+          <div class="absolute inset-0 rounded-2xl blur-2xl opacity-40" style="background: radial-gradient(circle, rgba(255, 0, 0, 0.5), transparent);"></div>
+         </div>
         </div>
        </div>
-      </div><!-- Welcome Video - Right Side -->
-      <div class="flex justify-center lg:justify-start">
-       <div class="glass-card rounded-2xl overflow-hidden w-full max-w-2xl" style="box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);">
-        <div class="relative bg-gray-900/50 mx-auto" style="width: 100%; max-width: 360px; padding-bottom: 177.78%; height: 0;"><iframe id="youtube-video" src="https://www.youtube.com/embed/VsxfB1j978k?modestbranding=1&amp;rel=0&amp;showinfo=0&amp;controls=1&amp;fs=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; pointer-events: auto;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
+       <h1 id="hero-title" class="text-4xl md:text-5xl lg:text-6xl font-black mb-4 fade-in fade-in-delay-2 neon-text tracking-tight text-center lg:text-left" style="background: linear-gradient(135deg, #ffffff 0%, #a78bfa 30%, #6366f1 60%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Acesso Exclusivo Multimídia</h1>
+       <p id="hero-subtitle" class="text-lg md:text-xl text-gray-300 fade-in fade-in-delay-3 font-light leading-relaxed mb-6 text-center lg:text-left">Músicas organizadas, prontas para seu pendrive automotivo.</p><!-- Decorative line -->
+       <div class="flex justify-center lg:justify-start mb-8 fade-in fade-in-delay-4">
+        <div class="h-1 w-32 rounded-full" style="background: linear-gradient(90deg, #6366f1, #a855f7, transparent);"></div>
+       </div><!-- Genre Tags -->
+       <div class="flex flex-wrap justify-center lg:justify-start gap-3 fade-in fade-in-delay-4"><span class="genre-tag px-5 py-2.5 rounded-full text-sm font-semibold cursor-pointer" style="color: #a78bfa;"> 🎵 Sertanejo </span> <span class="genre-tag px-5 py-2.5 rounded-full text-sm font-semibold cursor-pointer" style="color: #a78bfa;"> 🎶 Forró </span> <span class="genre-tag px-5 py-2.5 rounded-full text-sm font-semibold cursor-pointer" style="color: #a78bfa;"> 🎤 Piseiro </span> <span class="genre-tag px-5 py-2.5 rounded-full text-sm font-semibold cursor-pointer" style="color: #a78bfa;"> 💃 Arrocha </span>
+       </div>
+      </div><!-- Right Column - Welcome Video -->
+      <div class="order-1 lg:order-2 flex justify-center fade-in fade-in-delay-4">
+       <div class="glass-card rounded-3xl overflow-hidden" style="box-shadow: 0 0 50px rgba(99, 102, 241, 0.4); width: 100%; max-width: 380px;">
+        <div class="relative bg-gray-900/50" style="padding-bottom: 177.78%; height: 0;"><iframe id="youtube-video" src="https://www.youtube.com/embed/VsxfB1j978k?modestbranding=1&amp;rel=0&amp;showinfo=0&amp;controls=1&amp;fs=0&amp;disablekb=1&amp;iv_load_policy=3&amp;playsinline=1&amp;origin=https://canva.com" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; pointer-events: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe> <!-- Camada de proteção invisível sobre o vídeo -->
+         <div id="video-protection" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; cursor: default;"></div>
         </div>
-        <div class="p-4 text-center border-t border-gray-700/50">
-         <p class="text-sm font-semibold" style="color: #a78bfa;">🎥 Vídeo de Boas-Vindas</p>
+        <div class="p-5 text-center border-t border-gray-700/50" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.05));">
+         <p class="text-sm font-bold tracking-wide" style="color: #a78bfa;">🎥 VÍDEO DE BOAS-VINDAS</p>
         </div>
        </div>
       </div>
-     </div><!-- Title Section -->
-     <div class="text-center">
-      <h1 id="hero-title" class="text-5xl md:text-7xl font-black mb-6 fade-in fade-in-delay-2 neon-text tracking-tight" style="background: linear-gradient(135deg, #ffffff 0%, #a78bfa 30%, #6366f1 60%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Acesso Exclusivo Multimídia</h1>
-      <p id="hero-subtitle" class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto fade-in fade-in-delay-3 font-light leading-relaxed">Músicas organizadas, prontas para seu pendrive automotivo.</p><!-- Decorative line -->
-      <div class="flex justify-center mt-8 fade-in fade-in-delay-4">
-       <div class="h-1 w-32 rounded-full" style="background: linear-gradient(90deg, transparent, #6366f1, #a855f7, transparent);"></div>
-      </div>
      </div>
-    </header><!-- Features Section -->
-    <section class="mb-16 md:mb-20 fade-in fade-in-delay-4">
-     <div class="glass-card rounded-3xl p-8 md:p-10 relative overflow-hidden"><!-- Top accent line -->
-      <div class="absolute top-0 left-0 right-0 h-1" style="background: linear-gradient(90deg, #6366f1, #8b5cf6, #a855f7);"></div>
-      <h2 class="text-2xl md:text-3xl font-bold text-white mb-3 text-center">Conteúdo Premium Exclusivo</h2>
-      <p class="text-gray-400 text-center mb-8 max-w-2xl mx-auto text-lg">Acesse playlists atualizadas e organizadas por estilo, otimizadas para sistemas multimídia automotivos.</p><!-- Genre Tags with hover effects -->
-      <div class="flex flex-wrap justify-center gap-4"><span class="genre-tag px-6 py-3 rounded-full text-sm font-semibold cursor-pointer" style="color: #a78bfa;"> 🎵 Sertanejo </span> <span class="genre-tag px-6 py-3 rounded-full text-sm font-semibold cursor-pointer" style="color: #a78bfa;"> 🎶 Forró </span> <span class="genre-tag px-6 py-3 rounded-full text-sm font-semibold cursor-pointer" style="color: #a78bfa;"> 🎤 Piseiro </span> <span class="genre-tag px-6 py-3 rounded-full text-sm font-semibold cursor-pointer" style="color: #a78bfa;"> 💃 Arrocha </span>
-      </div>
-     </div>
-    </section><!-- Access Card -->
+    </header><!-- Access Card -->
     <section class="max-w-lg mx-auto">
      <div class="glass-card glow-effect rounded-3xl p-10 md:p-12 relative overflow-hidden"><!-- Animated border -->
       <div class="absolute inset-0 rounded-3xl opacity-50 pointer-events-none" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1)); animation: gradient-shift 6s ease infinite; background-size: 200% 200%;"></div>
@@ -479,19 +473,40 @@
     codeInput.focus();
     
     // ========================================
-    // PROTEÇÃO DO VÍDEO - BLOQUEIA ACESSO EXTERNO
+    // PROTEÇÃO TOTAL DO VÍDEO
     // ========================================
     
-    // Bloqueia clique direito no vídeo
     const videoIframe = document.getElementById('youtube-video');
-    if (videoIframe) {
-      videoIframe.addEventListener('contextmenu', function(e) {
+    const videoProtection = document.getElementById('video-protection');
+    
+    // Bloqueia clique direito em toda a página
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      return false;
+    });
+    
+    // Bloqueia todos os cliques no vídeo
+    if (videoProtection) {
+      videoProtection.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
+        return false;
+      });
+      
+      videoProtection.addEventListener('mousedown', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      });
+      
+      videoProtection.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
         return false;
       });
     }
     
-    // Bloqueia tentativas de abrir em nova aba
+    // Bloqueia atalhos de teclado perigosos
     document.addEventListener('keydown', function(e) {
       // Bloqueia Ctrl+Shift+C (DevTools)
       if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
@@ -508,26 +523,21 @@
         e.preventDefault();
         return false;
       }
+      // Bloqueia Ctrl+S (Salvar)
+      if (e.ctrlKey && e.keyCode === 83) {
+        e.preventDefault();
+        return false;
+      }
     });
     
-    // Adiciona camada de proteção visual sobre o vídeo
-    const videoContainer = videoIframe?.parentElement;
-    if (videoContainer) {
-      const protectionLayer = document.createElement('div');
-      protectionLayer.style.cssText = `
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-        pointer-events: none;
-      `;
-      videoContainer.appendChild(protectionLayer);
-      
-      // Permite interação apenas com controles do player
-      videoIframe.style.zIndex = '2';
-    }
+    // Remove qualquer link do YouTube que apareça
+    setInterval(function() {
+      const ytLinks = document.querySelectorAll('a[href*="youtube.com"], a[href*="youtu.be"]');
+      ytLinks.forEach(link => {
+        link.style.pointerEvents = 'none';
+        link.style.display = 'none';
+      });
+    }, 100);
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bc460d791312746',t:'MTc2ODEzNDEzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bc46715f739f63f',t:'MTc2ODEzNDM4OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
