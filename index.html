@@ -207,8 +207,8 @@
        </div>
       </div><!-- Welcome Video - Right Side -->
       <div class="flex justify-center lg:justify-start">
-       <div class="glass-card rounded-2xl overflow-hidden w-full max-w-md" style="box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);">
-        <div class="relative bg-gray-900/50" style="padding-bottom: 56.25%; height: 0;"><iframe src="https://www.youtube.com/embed/5tmCH0jePqI" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+       <div class="glass-card rounded-2xl overflow-hidden w-full max-w-2xl" style="box-shadow: 0 0 40px rgba(99, 102, 241, 0.3);">
+        <div class="relative bg-gray-900/50" style="padding-bottom: 56.25%; height: 0;"><iframe id="youtube-video" src="https://www.youtube.com/embed/5tmCH0jePqI?modestbranding=1&amp;rel=0&amp;showinfo=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; pointer-events: auto;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="p-4 text-center border-t border-gray-700/50">
          <p class="text-sm font-semibold" style="color: #a78bfa;">🎥 Vídeo de Boas-Vindas</p>
@@ -477,6 +477,57 @@
     codeInput.addEventListener('input', hideFeedback);
     
     codeInput.focus();
+    
+    // ========================================
+    // PROTEÇÃO DO VÍDEO - BLOQUEIA ACESSO EXTERNO
+    // ========================================
+    
+    // Bloqueia clique direito no vídeo
+    const videoIframe = document.getElementById('youtube-video');
+    if (videoIframe) {
+      videoIframe.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+      });
+    }
+    
+    // Bloqueia tentativas de abrir em nova aba
+    document.addEventListener('keydown', function(e) {
+      // Bloqueia Ctrl+Shift+C (DevTools)
+      if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+        e.preventDefault();
+        return false;
+      }
+      // Bloqueia F12 (DevTools)
+      if (e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+      }
+      // Bloqueia Ctrl+U (View Source)
+      if (e.ctrlKey && e.keyCode === 85) {
+        e.preventDefault();
+        return false;
+      }
+    });
+    
+    // Adiciona camada de proteção visual sobre o vídeo
+    const videoContainer = videoIframe?.parentElement;
+    if (videoContainer) {
+      const protectionLayer = document.createElement('div');
+      protectionLayer.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+      `;
+      videoContainer.appendChild(protectionLayer);
+      
+      // Permite interação apenas com controles do player
+      videoIframe.style.zIndex = '2';
+    }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bc4509875bbf637',t:'MTc2ODEzMzQ2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bc456a3c67800ec',t:'MTc2ODEzMzcxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
