@@ -3,550 +3,287 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acesso Exclusivo Multimídia</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="/_sdk/element_sdk.js"></script>
+  <title>Menu Gastrobar</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&amp;family=Montserrat:wght@300;400;500&amp;display=swap" rel="stylesheet">
   <style>
-    body {
-      box-sizing: border-box;
-    }
-    
-    * {
-      font-family: 'Inter', sans-serif;
-    }
-    
-    h1, h2, h3 {
-      font-family: 'Space Grotesk', sans-serif;
-    }
-    
-    .glass-card {
-      background: rgba(10, 10, 15, 0.6);
-      backdrop-filter: blur(40px);
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      box-shadow: 0 8px 32px 0 rgba(99, 102, 241, 0.15);
-    }
-    
-    .glow-effect {
-      box-shadow: 0 0 80px rgba(99, 102, 241, 0.4), 0 0 40px rgba(168, 85, 247, 0.3);
-    }
-    
-    .input-glow:focus {
-      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
-      border-color: rgba(99, 102, 241, 0.5) !important;
-    }
-    
-    .btn-shine {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .btn-shine::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.5s;
-    }
-    
-    .btn-shine:hover::before {
-      left: 100%;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(5deg); }
-    }
-    
-    .float-animation {
-      animation: float 4s ease-in-out infinite;
-    }
-    
-    @keyframes pulse-glow {
-      0%, 100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.1); }
-    }
-    
-    .pulse-glow {
-      animation: pulse-glow 3s ease-in-out infinite;
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .fade-in {
-      animation: fadeIn 1s ease-out forwards;
-    }
-    
-    .fade-in-delay-1 { animation-delay: 0.1s; opacity: 0; }
-    .fade-in-delay-2 { animation-delay: 0.2s; opacity: 0; }
-    .fade-in-delay-3 { animation-delay: 0.3s; opacity: 0; }
-    .fade-in-delay-4 { animation-delay: 0.4s; opacity: 0; }
-    
-    .genre-tag {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.1));
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      transition: all 0.3s ease;
-    }
-    
-    .genre-tag:hover {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(168, 85, 247, 0.2));
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-    }
-    
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-5px); }
-      40%, 80% { transform: translateX(5px); }
-    }
-    
-    .shake {
-      animation: shake 0.4s ease-in-out;
-    }
-    
-    @keyframes particles {
-      0% { transform: translateY(0) translateX(0); opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { transform: translateY(-100%) translateX(20px); opacity: 0; }
-    }
-    
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: linear-gradient(135deg, #6366f1, #a855f7);
-      border-radius: 50%;
-      animation: particles 8s linear infinite;
-    }
-    
-    @keyframes gradient-shift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    
-    .gradient-animate {
-      background-size: 200% 200%;
-      animation: gradient-shift 8s ease infinite;
-    }
-    
-    @keyframes neon-pulse {
-      0%, 100% { 
-        text-shadow: 0 0 10px rgba(99, 102, 241, 0.5),
-                     0 0 20px rgba(99, 102, 241, 0.3),
-                     0 0 30px rgba(99, 102, 241, 0.2);
-      }
-      50% { 
-        text-shadow: 0 0 20px rgba(99, 102, 241, 0.8),
-                     0 0 30px rgba(99, 102, 241, 0.6),
-                     0 0 40px rgba(99, 102, 241, 0.4);
-      }
-    }
-    
-    .neon-text {
-      animation: neon-pulse 2s ease-in-out infinite;
-    }
-    
-    .grid-bg {
-      background-image: 
-        linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
-      background-size: 50px 50px;
-    }
+    body { box-sizing: border-box; }
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+    .font-body { font-family: 'Montserrat', sans-serif; }
+    .wavy-line { width: 60px; height: 20px; opacity: 0.6; }
   </style>
-  <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
- <body class="h-full overflow-auto">
-  <div id="app-wrapper" class="min-h-full w-full relative"><!-- Modern gradient background -->
-   <div class="fixed inset-0 -z-20 gradient-animate" style="background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2e 25%, #16213e 50%, #0f1419 75%, #0a0a0f 100%);"></div><!-- Grid overlay -->
-   <div class="fixed inset-0 -z-10 grid-bg opacity-30"></div><!-- Animated particles -->
-   <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
-    <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
-    <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
-    <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
-    <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
-    <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
-    <div class="particle" style="left: 70%; animation-delay: 2.5s;"></div>
-    <div class="particle" style="left: 80%; animation-delay: 4.5s;"></div>
-    <div class="particle" style="left: 90%; animation-delay: 1.5s;"></div>
-   </div><!-- Decorative gradient orbs -->
-   <div class="fixed top-0 left-0 w-96 h-96 rounded-full blur-3xl pulse-glow -z-10" style="background: radial-gradient(circle, rgba(99, 102, 241, 0.3), transparent 70%);"></div>
-   <div class="fixed bottom-0 right-0 w-96 h-96 rounded-full blur-3xl pulse-glow -z-10" style="background: radial-gradient(circle, rgba(168, 85, 247, 0.3), transparent 70%); animation-delay: 1.5s;"></div>
-   <div class="fixed top-1/2 left-1/2 w-96 h-96 rounded-full blur-3xl pulse-glow -z-10" style="background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent 70%); animation-delay: 3s; transform: translate(-50%, -50%);"></div>
-   <div class="max-w-6xl mx-auto px-4 py-8 md:py-16"><!-- Hero Section -->
-    <header class="mb-12 md:mb-16">
-     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"><!-- Left Column - Text Content -->
-      <div class="order-2 lg:order-1 fade-in fade-in-delay-1"><!-- YouTube Style Logo -->
-       <div class="flex justify-center lg:justify-start mb-8">
-        <div class="float-animation">
-         <div class="relative">
-          <svg width="140" height="100" viewbox="0 0 160 110" fill="none" xmlns="http://www.w3.org/2000/svg"><!-- YouTube rounded rectangle background --> <rect x="10" y="20" width="140" height="70" rx="12" fill="url(#youtube-gradient)" opacity="0.95" /> <rect x="10" y="20" width="140" height="70" rx="12" stroke="url(#glow-gradient)" stroke-width="2" fill="none" opacity="0.6" /> <!-- Play button triangle --> <path d="M65 40 L65 70 L95 55 Z" fill="#ffffff" opacity="0.95" /> <!-- Subtle shine effect --> <path d="M25 30 Q30 25 140 28" stroke="rgba(255,255,255,0.3)" stroke-width="2" stroke-linecap="round" opacity="0.4" /> <defs>
-            <lineargradient id="youtube-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-             <stop offset="0%" style="stop-color:#ff0000" />
-             <stop offset="50%" style="stop-color:#cc0000" />
-             <stop offset="100%" style="stop-color:#990000" />
-            </lineargradient>
-            <lineargradient id="glow-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-             <stop offset="0%" style="stop-color:#6366f1" />
-             <stop offset="50%" style="stop-color:#a855f7" />
-             <stop offset="100%" style="stop-color:#ec4899" />
-            </lineargradient>
-           </defs>
-          </svg><!-- Glow effect -->
-          <div class="absolute inset-0 rounded-2xl blur-2xl opacity-40" style="background: radial-gradient(circle, rgba(255, 0, 0, 0.5), transparent);"></div>
-         </div>
-        </div>
-       </div>
-       <h1 id="hero-title" class="text-4xl md:text-5xl lg:text-6xl font-black mb-4 fade-in fade-in-delay-2 neon-text tracking-tight text-center lg:text-left" style="background: linear-gradient(135deg, #ffffff 0%, #a78bfa 30%, #6366f1 60%, #ec4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Acesso Exclusivo Multimídia</h1>
-       <p id="hero-subtitle" class="text-lg md:text-xl text-gray-300 fade-in fade-in-delay-3 font-light leading-relaxed mb-6 text-center lg:text-left">Músicas organizadas, prontas para seu pendrive automotivo.</p><!-- Decorative line -->
-       <div class="flex justify-center lg:justify-start mb-8 fade-in fade-in-delay-4">
-        <div class="h-1 w-32 rounded-full" style="background: linear-gradient(90deg, #6366f1, #a855f7, transparent);"></div>
-       </div><!-- Genre Tags -->
-       <div class="flex flex-wrap justify-center lg:justify-start gap-3 fade-in fade-in-delay-4"><span class="genre-tag px-5 py-2.5 rounded-full text-sm font-semibold cursor-pointer" style="color: #a78bfa;"> 🎵 Sertanejo </span> <span class="genre-tag px-5 py-2.5 rounded-full text-sm font-semibold cursor-pointer" style="color: #a78bfa;"> 🎶 Forró </span> <span class="genre-tag px-5 py-2.5 rounded-full text-sm font-semibold cursor-pointer" style="color: #a78bfa;"> 🎤 Piseiro </span> <span class="genre-tag px-5 py-2.5 rounded-full text-sm font-semibold cursor-pointer" style="color: #a78bfa;"> 💃 Arrocha </span>
-       </div>
-      </div><!-- Right Column - Welcome Video -->
-      <div class="order-1 lg:order-2 flex justify-center fade-in fade-in-delay-4">
-       <div class="glass-card rounded-3xl overflow-hidden" style="box-shadow: 0 0 50px rgba(99, 102, 241, 0.4); width: 100%; max-width: 380px;">
-        <div class="relative bg-gray-900/50" style="padding-bottom: 177.78%; height: 0;"><iframe id="youtube-video" src="https://www.youtube.com/embed/VsxfB1j978k?autoplay=1&amp;mute=0&amp;controls=1&amp;modestbranding=1&amp;rel=0&amp;showinfo=0&amp;fs=0&amp;disablekb=1&amp;iv_load_policy=3&amp;playsinline=1&amp;enablejsapi=1" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; pointer-events: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe> <!-- Camada de proteção invisível sobre o vídeo -->
-         <div id="video-protection" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; cursor: default;"></div>
-        </div>
-        <div class="p-5 text-center border-t border-gray-700/50" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.05));">
-         <p class="text-sm font-bold tracking-wide" style="color: #a78bfa;">🎥 VÍDEO DE BOAS-VINDAS</p>
-        </div>
-       </div>
-      </div>
+ <body class="h-full bg-white">
+  <div id="menu-container" class="min-h-full w-full overflow-auto bg-white">
+   <div class="max-w-5xl mx-auto px-8 py-12"><!-- Logo -->
+    <div class="text-center mb-4">
+     <div class="inline-block mb-3"><img id="logo-image" src="https://blogger.googleusercontent.com/img/a/AVvXsEhWlg_Ol83gnlXlQ_sN0RDyJUkhzKuVUvxSgbk7voU1C95ToE3hYMyjb2F1RACNiAgw4dLuy3z86QV8FrDJvwQ2XYjE47dkQhaCYBxCRZ8d9V7cU2db4MFd4K9mQi8CNwZ2sf4vS9ulcfROcApNT1pU1tkh700GEqNwxGvyJ_ffnfaT74JKTAAe3lcTYLs" alt="Logo" class="h-32 w-auto object-contain" loading="lazy">
      </div>
-    </header><!-- Access Card -->
-    <section class="max-w-lg mx-auto">
-     <div class="glass-card glow-effect rounded-3xl p-10 md:p-12 relative overflow-hidden"><!-- Animated border -->
-      <div class="absolute inset-0 rounded-3xl opacity-50 pointer-events-none" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1)); animation: gradient-shift 6s ease infinite; background-size: 200% 200%;"></div>
-      <div class="text-center mb-10 relative z-10"><!-- Modern Lock Icon -->
-       <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.1)); box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);">
-        <svg id="lock-icon" width="36" height="36" viewbox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-        </svg>
-       </div>
-       <h3 id="card-title" class="text-3xl font-bold text-white mb-3">Área do Membro</h3>
-       <p class="text-gray-400 text-base">Insira seu código para acessar o conteúdo</p>
-      </div><!-- Input Form -->
-      <form id="access-form" class="space-y-5 relative z-10">
-       <div><input type="text" id="access-code" placeholder="Digite seu código de acesso" class="input-glow w-full px-6 py-5 rounded-2xl text-white placeholder-gray-500 text-center text-xl font-semibold tracking-widest uppercase transition-all duration-300 outline-none" style="background: rgba(15, 15, 25, 0.8); border: 2px solid rgba(99, 102, 241, 0.2);" autocomplete="off" spellcheck="false">
-       </div><button type="submit" id="submit-btn" class="btn-shine w-full py-5 rounded-2xl font-bold text-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-2xl" style="background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7); color: #ffffff;"> <span id="button-text" class="flex items-center justify-center gap-3">
-         <svg width="22" height="22" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <polyline points="7 10 12 15 17 10" /> <line x1="12" y1="15" x2="12" y2="3" />
-         </svg> Desbloquear Conteúdo </span> </button>
-      </form><!-- Feedback Message -->
-      <div id="feedback" class="mt-6 text-center hidden relative z-10">
-       <p id="feedback-text" class="text-base font-medium"></p>
-      </div>
-     </div>
-    </section><!-- Footer -->
-    <footer class="mt-16 text-center">
-     <p class="text-gray-500 text-sm font-medium">© 2025 Acesso Multimídia Premium • Conteúdo Exclusivo</p>
-    </footer>
+    </div><!-- Restaurant Name -->
+    <div id="restaurant-name" class="font-display text-2xl text-center tracking-widest mb-2" style="color: #999999;"></div><!-- Title -->
+    <h1 id="category-title" class="font-display text-6xl text-center tracking-wide mb-6" style="color: #2a2a2a;"></h1><!-- Divider -->
+    <div class="flex justify-center mb-12">
+     <svg class="wavy-line" id="divider" viewbox="0 0 60 20" preserveaspectratio="xMidYMid meet"><path d="M0,10 Q7.5,5 15,10 T30,10 T45,10 T60,10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+     </svg>
+    </div><!-- Menu Items -->
+    <div id="menu-items" class="space-y-20"></div>
    </div>
   </div>
   <script>
-    // ========================================
-    // CONFIGURAÇÃO DE CÓDIGOS DE ACESSO
-    // ========================================
-    
-    const accessCodes = {
-      'VIP2026': 'https://drive.google.com/drive/folders/exemplo-vip-2026',
-      'PREMIUM2025': 'https://drive.google.com/drive/folders/exemplo-premium-2025',
-      'SERTANEJO': 'https://drive.google.com/drive/folders/exemplo-sertanejo',
-      'FORRO': 'https://drive.google.com/drive/folders/exemplo-forro',
-      'PISEIRO': 'https://drive.google.com/drive/folders/exemplo-piseiro',
-      'ARROCHA': 'https://drive.google.com/drive/folders/exemplo-arrocha'
-    };
-    
-    // ========================================
-    // CONFIGURAÇÃO DO ELEMENTO SDK
-    // ========================================
-    
+    const menuData = [
+      { name: "Pastéis de carne e azeitona", description: "Carne bovina com temperos leves e pedacinhos pequenos de azeitonas\nservido com o tradicional molho rosê", price: "29,90", color: "#E8A87C", image: "https://blogger.googleusercontent.com/img/a/AVvXsEh9wWxDroFH52aybfK6mHOOEcZ9RGa2FHDKexJ287OGHADZHmj29JgBEZhMHi1NgwXP4c2PLnI2fTAKXtJftPfDgSRMnCS3ATz_O_CkrGLLiYd6QKuR2QdxVN2zlGGG1kCo7wCHjgIO4DrLRoGaPONh5ZkVW5hHaTbk6DgiY7lAc5lbuCPfbxwEwE7_Zgo=s16000" },
+      { name: "Pastéis de 4 queijos", description: "Blend de mussarela, parmesão, queijo coalho, cream cheese e gorgonzola acompanha nossa tradicional geleia de uva feita na casa", price: "31,90", color: "#F4C8A0", image: "https://blogger.googleusercontent.com/img/a/AVvXsEhzBi0q8If4x3EIRHrstS5VMMxtMdqgQCisf-zLww_w5qaS9KGlQdpHhWlfpCXsa596tHwftwoaJNzGfJteEzSSYUxMKpnwiyk4jftKKV5HCuFGW-e_a3R07fTgZ4rk5aROoBsjXzNieqB0wt50a4eAz87TXmV6dIMfxh5fBwV7e7jLPmvfaw6xVYnzYG8=s16000" },
+      { name: "Pastéis de carne de sol na nata", description: "Feito com carne de sol selecionada produzida na casa, acompanha uma porção extra de nata cremosa e cream cheese", price: "29,90", color: "#D4845E", image: "https://blogger.googleusercontent.com/img/a/AVvXsEiiat5-KeyhyKWE7B7JDbs79A_1fdHGLTyHGXJ4XMTAOo6-KT02-D7cor0BfyvUd1UKl_wcmMYApfJZVQ4oQCuaRBjgl9nhpSrBM6aL_Emi1hE2-3zDY0xq-2TFHEU6iAmMAQ98QnDy6JOsk2c5jrjv5Crp9TBewvsFsyrpf3TAu-HZKASuGHFX0KsYxb0=s16000" },
+      { name: "Pastéis de costela", description: "Recheado com carne desfiada de costela bovina cozida lentamente com temperos caseiros e cerveja, acompanha geleia de manga com pimenta", price: "29,90", color: "#B8704A", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjsFa81uQoHlT0ryKrf8rmKu7pBBMVa0OicpFWxkOrICsmfm_KONaP4fSSRxBJFwTYaXwjCLup-fID2822ddjDWW0e4N5KAJowSJ1RJp28S1K9cH5_ZoRkqmCJztMB5Vf6Gd_0RhdKZLOtZWi9bQrrRMhXoBPnF-bu3jcWAIdSQNO5k2iKlS36SVqpyZ8g" },
+      { name: "ENTRADAS", isSection: true },
+      { name: "Batata frita tradicional", description: "Servidas com molho rosé", price: "16,90", color: "#F4D699", image: "https://blogger.googleusercontent.com/img/a/AVvXsEid27jgUT0OdY7W3pNEnSKLoHsrxwc35r7wr7buezd15zE88wd-8Z8CmOx76Rqj2MiKBvw5lGP_t9cc3JEzoq6VTw1d6VJzuFP1JundDf5H-tdVXmSFFkqyzJN4ajJ9-Sq_j61FGpcjs3l8KQt_5LG2eRiJqpRC2eVyYkAvnJuiQ6UnFX5qhmMzPiFZNTQ" },
+      { name: "Batata frita de vó", description: "Porção generosa de batata frita coberta com queijo de manteiga derretido, cupim desfiado, crocante de bacon e molho rosé", price: "29,90", color: "#E8C458", image: "https://blogger.googleusercontent.com/img/a/AVvXsEhhokvrL_ZJWd17Uu6-OCdNnuB4HhKwPOZsWSMsEtWn-XRdKuxxlbe8HWTr-IAfuLJTphwB49vO_dzS1RmKt-FDB7Y_kv9CnQYED4Io_7zJE5qbdXRo2ptQ8mw6vPtmPRZmt5-_J5ndEu5XfJsRllrOphWW8VvT0y2SuQiaMgmTJkXHNI6XEuPQEhm4oH8" },
+      { name: "Croquetas Caipira", description: "6 croquetas de frango cremoso recheadas com milho e bacon", price: "29,90", color: "#D49A4C", image: "https://blogger.googleusercontent.com/img/a/AVvXsEhFw1aCEGFCAttE6dfs14tJUjfCOUPVIy_bUHM7GZiGeryHe40Gq3Ca3vnmEWgGzBOEtObeeiXX641HSm1ZNZBAvnERANHXVkgDK_uvd4YmMCpgLcbqDX_IvMzqR_Iq0qV-2Su6i_v4i1DcwMYFO-ELc7lAx8AlJDQQfbOdxwtIFbCJc3ArVzIwZrwKIR4=s16000" },
+      { name: "Sushi de Carrazera", description: "Sushi crocante com massa de macaxeira, cubos de charque e carne de sol servido com molho teriyaki de rapadura", price: "34,90", color: "#C89560", image: "https://blogger.googleusercontent.com/img/a/AVvXsEh-AGn2iD6xQqDAzsaLleeMBUdPev7Zz0k-UHOJCwR5KozbpyDYB0zaj62J9dGqumhqVuhKdJv2XBZO6iwaP8DNS8FLiiIARtpBENMBKaYlpT4MlJmaYkFremMthWU-amRg-LIlh55vMXAIWLMblVkmo8bi3i9-QQrE-Lx2DXeBiN-qd95o9ynsSo0908M" },
+      { name: "Filé no Panne", description: "Tiras de filé mignon salteadas com creme de gorgonzola servido no pão italiano quentinho", price: "59,90", color: "#8B6348", image: "https://blogger.googleusercontent.com/img/a/AVvXsEg9WpbUUYaY9M_nh5_5Z2yOJXZT5eQOPS8EX9GJBT71pNPuso0e8k5cAk7aC9s-luyvFsFpiA-ig3ZuyOXi43aEvMoWi2FDuD2D7FPp_73iK4p8UrRZURZ5aIIB0EZA-8JQPd28zePsFUWwq8HPZ3f5m7f4G2wn5dVMxLeiuU0nkRbk1qm6Z6Or7HIHzz0=s16000" },
+      { name: "Trio nordestino", description: "Tiras de carne de sol grelhadas na manteiga da terra acompanhada de macaxeira frita e queijo coalho", price: "39,90", color: "#A0704A", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjjXMYyS4zzq79k1TQIan85BfjtP-aEHicTFsA_Oe_-wzqDr7K4juI_0KvSQ7v8R5_QKzNeBiqOnJxLKiJJOzjk0Zr0NHKABnkpylmO_6taHn-6YYvs3rJAA8ySsBr9jZ8GLEPcPB76lV78QeLpjWhHKjmrXdG13C23X7T4qmiU8iRyoIBcundYchiLP8M=s16000" },
+      { name: "Ai meu coração", description: "Coração de galinha marinado no shoyu salteado no molho oriental e servido com chips de macaxeira", price: "39,90", color: "#7A4A3A", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjTvMBZwgbQJ3gvxPJq4z-TS5TwgbR0nImb8yg6xY2zqmMVbjzbwiD2a0ZmR63vJs58q3gCjXgQhqtmuXOqQpEy5IElDjqJLpeO21eZpIdvfiNmFqw7Av3nfITh1H38NeCFHgXcSTNsS9kitpeyCsO2BhappaIUhMUPZJm0A-1W7rmGy023fh-jeE-BkGw" },
+      { name: "Panceta de porco", description: "Barriga suína selecionada à pururuca servida com geleia de manga e pimenta da fazendinha, farofa e vinagrete", price: "24,90", color: "#B8664A", image: "https://blogger.googleusercontent.com/img/a/AVvXsEj2um2K2e4tp-Bav6cSFSqhMQTjzabfWfFyONeU6RpOJrxkl80rrYsiJZ__mqgRSwsAoZhzVY0mDuISRghi-oo8EbE_5dQNQJtD1qG4VNrFqyWz0wWjtTA9-3G5hN5mwABF92zEX6WDxiLwLBhU1JeqQfpjnQCQX0Cvcq8vcTXcFRBU3S2f7BHwboaglio" },
+      { name: "Sol do Sertão", description: "Chips crocantes de macaxeira servidas com carne de sol desfiada e creme de nata", price: "29,90", color: "#E8BC64", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjkIDo_ioQpksSdpZ8_kx8fGLprZkgPwJNOu3wvJBaqFy88mHpqBMVVva6NziHnXFSSwJcpBeTj_8WfX6HxcYK46w3Q-G0a6v1nTLwEOO4f4F_oTR50nAAY_LtuBo30MojqyOzKpBEwQ5fI1Yl-jT-xQLP0Ta9o8VByBJ13nUsreusjyU2d0EzVknIppfE" },
+      { name: "Gostosura", description: "3 sanduíches no pão brioche com cupim desfiado, picles de cebola roxa, queijo de manteiga e maionese de limão siciliano", price: "32,90", color: "#D4956A", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjDY9gg5tQQc0NCz9gcnu6zb58HavhQE5aRiriKL2JXQizcHL3Z4L8_76sNf62-V8chd9lcYDHzOOrgkOpEvLHADGza3WiB3Bk8w_0OioCT9V-FpT6z1za-X_TDOcPVjGXmozGxcX0m2J5IYUI96Hvi3ncuy9dAPCs9txXE85LNIpE0F5MbIwbC0N7HfIk" },
+      { name: "Camarão chique", description: "Camarões empanados fritos acompanhados de creme de queijo, tomates confitados e molho pesto", price: "33,90", color: "#E8A876", image: "https://blogger.googleusercontent.com/img/a/AVvXsEibLAwVEqeknXMC7ZBih4tu4nkZJQtTnHHtGvjkpeTH8oJd3S3Trs51PC8A-TcECMZrMRKtAE9Jakc5LJ3Fx9YGC6B5Cr-1G8__bcB9hOzCq8Qdqh0JBLmnKFiwfEk0M4BYmAQgzRiZpZVuOFBvMVMIQyGx4ENa4dE4WyAXqwZ-wEw-IdQtj2oiYT-fl3A" },
+      { name: "Isca de tucunaré", description: "Iscas de peixe empanadas com fubá de milho e fritas, servidas com maionese de limão siciliano (sem glúten)", price: "32,90", color: "#F0B874", image: "https://blogger.googleusercontent.com/img/a/AVvXsEj71zaL0K0n4p5gwD6ykd1TgixyTlSJrThna0Kdk-lSk8o5xVXbH7uKaEAp1I8_AYIfohCePrpx_-AekY92T-7wZIC9louawz2GKXAkmGwUc4dxP6CIwAZMpuZ_oLIksO-SGpl3pRYZaNlY9KYUHrXQDq0TQLq9RyI88jc7xr59Z62w51zhomNqcM7vh7c" },
+      { name: "CUMBUQUINHAS", isSection: true },
+      { name: "Escondidinho de macaxeira", description: "Carne de sol na manteiga da terra, coberta com purê de macaxeira com gratinado de queijo", price: "19,90", color: "#D4A574", image: "https://blogger.googleusercontent.com/img/a/AVvXsEh6BylJ7bAz719-U_ihF34rgorc38mtcv5RwgrOhQZffBC10_4nN1WJcLQ-pl1ZrMbVgqyNgaK3_LfdjVlpbxagXkPiDviq6otgA2KwVAZMtUIKiz2mZyjsuo0dhmEVuCLWDxPaBThZ0hK5skcZJ9qfUAhcTFk7S3UxpC3A3xTDQpjCcbf8F6iEAjo9GCk" },
+      { name: "Escondidinho de camarão", description: "Camarões gratinados com tempero especial cobertos com purê de macaxeiras com gratinados de queijo", price: "22,90", color: "#E8B878", image: "https://blogger.googleusercontent.com/img/a/AVvXsEgKj56hyicbNqfxRw1AFtXWrbXytWaPwfly2UsUtIkaLiIdY-oRJ94wFC9IowXDv-oS-BZwOEnWT5RqSgS8BieDpKeiRGE0oSMntkZF0s7oOQZXfyz8CQ-dZWBAtqhmRgCeQKlsYLgYf2dlH4Dr2xJryvu05dpTR8MKy6zCijnCI9FqNWB4mLrpLb-hQIQ" },
+      { name: "Caldo da caridade", description: "Receita tradicional de dona Francisquinha, feito com carne moída e ovos, acompanha um pãozinho assado", price: "16,90", color: "#C4956A", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjRwJOa04Oe3NS7zkaH3SNTsaz44qXlQREaxlKEqJzZDIqDRxDTeJFp-3N0bdAvlpxp3KP3_ntO2-ObuYvHJAXPbuW1K5UNwQk7U0zzEjN0PaOwhTNExpoo_q4Y458uyIRhs3lXKuYwYpasNmpea3h6Uv2EFFwpeRiZ857GWCYfrbnoB0rTEPnuIVvGoPc" },
+      { name: "CARNES", isSection: true },
+      { name: "Filé à Parmegiana de Carne", description: "Tradicional filé empanado servido com cama de molho de tomate italiano e gratin de mussarela, servido com massa (grano duro)", price: "129,90", color: "#6B4423", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjAv58yCi1gH1EeU0_KmfhfYpPwdpgGtygSwl9Cg0alYSna1GaQVHPVr6N15iJLgG0Y3vtjDuSEEZFun4mVOkqRQdzG9HdFBXOt_w4slFqYsBdquPqCSUWDupfIEbYvRN3HaxZKeBjucIcXQALstU9nbRvZh2pJwq46bP6LaTcHbqKSzykHGevXnJ8zi1E" },
+      { name: "Parmegiana da Sophie", description: "Nosso tradicional filé empanado com molho de tomate lisinho, massa bavetti com molho branco, queijo parmesão, acompanhado de batata frita", price: "84,90", color: "#7A5433", image: "https://blogger.googleusercontent.com/img/a/AVvXsEhIYAd_6heVGNx7dg3d1mqAyxdFjm2hfXKcpwEvJFkZzW3TOx1G0nEigcfOGuQWPsvE06MspunoN8L6fYzXCCaElxbKBoZqKyC3FJXnWwMeERFNquKlqss0h6gPlM1LzRcYZPCSnFT5Wz9KlPAJ_0m6sCH7fKLuxtQJ8KwiQu49qaHPoheTVN7ftZY4FH0" },
+      { name: "Filé de seu Pedro", description: "Medalhões de filé mignon selados e flambados, servidos com molho de gorgonzola. Acompanha: Arroz com brócolis.", price: "189,00", color: "#754A32", image: "https://blogger.googleusercontent.com/img/a/AVvXsEgJq0BSa0Bt63BlOjR9ITIRBlxRWPWoC5AHppIEWKCnTkACLBPVUFfAhqHu3bxFDo4UR0gwq_rXo8ww_bBv_vC3n4GqeejZUUrOKx7qud4oDsTSot3i2u4QHaxdXUwaQZN7GJy_2z9XNOS7yZVNvdOhdgc3ryh8YsJ1p42EjNn850IrhO6CFjeyhg9wPZM" },
+      { name: "Picanha de Vó", description: "Picanha grelhada na chapa com molho de queijos sertanejos, servida com baião de dois, macaxeira frita, farofa e vinagrete.", price: "159,00", color: "#6B4423", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjyfHL0Y1BIh2fNjakAXQM3hI8OfvUP_TKsfbJa0JvxWR79rCaf70MT6tj6zolLot6X03KSLmqmAjHiGmKJoTIfLoy8o27PqxzY8Br7Qm-TSYjuNzUy7yBy3NsCWPcPrt4FFrFzgSqkiSHScoZlXrx2O0dQCTJmw2NHtsRA7oyTLlrxdpKPspcZegF60jU" },
+      { name: "Picanha de sol", description: "Picanha de sol (feita na casa) selada na chapa com manteiga de ervas e cebolas roxas, servido com arroz de leite vermelho, farofa e vinagrete", price: "99,90", color: "#8B5A2B", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjY1WZuxpQuko0BGlXvlfFykNZQVJXogA3lVpEyBWhW7OhSBWcOqYAcWQkOp-L6M38rhLBcsMy-6NWszjkVRRKviw7itol_w6sEQv3LeZzG3wZ9cQC3iGSLBqUO7xfV-YyR9l42cyHnFLw1DMQ_H_EP7B1qR__p-WcPHHniOaM8Ren6VTDU9ZJpo9JEqvA" },
+      { name: "Boi bêbo", description: "Costela bovina marinada na cerveja preta e ervas assada levemente ao vapor e servida com nosso delicioso arroz de leite e chips de macaxeira", price: "39,90", color: "#7A4423", image: "https://blogger.googleusercontent.com/img/a/AVvXsEh1glNtyR1PrWKh0TFK5xV0-qraovtEAXPmx7Fz40UtgQGnJfYiH7tkuM3uewxo_U1D1ooUWayaoGTLM_6Zb8DLDnhvobZ3pAbYpDWpPfY1g4L75ShiGu2hmBlxF-ciUlOab2ZZ00ZRQzvpMj4kvVFG4YAbMQDQCIlC5wKM-xhPVCTGT78cUagMqT0S-Sk" },
+      { name: "Baião de 4", description: "Baião de feijão verde, com carne de sol, queijo coalho, charque, torresmo e servido com couve frito", price: "49,90", color: "#9B6B47", image: "https://blogger.googleusercontent.com/img/a/AVvXsEhWK62Zjb4fFhSPMw4apLWnKvt68Fn9MxSiWr4X7GPXSoaFxieM4YEAsnN15q4Bk-9lwy2QfoJP3_LDcqI1L22S78MRClIw212pw7iHWEgHAajwlI9gvGzEkmouC6MmgvtukttEcdSjNq7PPQPZPnrERHMSzGA5Bv0C5LlYmZg0haD1r4MY9NIfhbBg2Zc" },
+      { name: "Cumêzim de Vó", description: "Arroz vermelho cozido ao leite, servido com chips de macaxeira crocante e carne de sol desfiçada", price: "39,90", color: "#A0704A", image: "https://blogger.googleusercontent.com/img/a/AVvXsEhCwlr8wMVVOQpcBt174H73lYZ0rZVFIg5MAxNQpbAMBtaiV5KA9wAHcvK0eVMA3ZvliJqng2MonxZJDxrlAKitXyGFy4z7y05HcFiv5zqYq7DruMaYlAgi2OlWm7tSpmlRXoEKKBm1JIGOZkuVui5yRxETdSDdlv_cQ4eqA4A65RlQ6K1rfTFVn9whjng" },
+      { name: "Lasanha de Voinha", description: "Lasanha à bolonhesa tradicional, com um segredinho trazido da itália", price: "49,90", color: "#8B4513", image: "https://blogger.googleusercontent.com/img/a/AVvXsEhoQwBbiEkLmR21wPu3bfY1faesS09LRTP1klC7h5bpwVSg3R5wNYZe3ESA7rz4lj6JBmNSCRlv4CyUrfTOLpmXgdicmOp-PpO6sOJs1G1M-Iw0mlV3oRACMHZ04ysnApOn_IOEiLTiirlClu5zrIiCkNW8jse44zwTra7NP22Q8PHunX79RvoAPaaR4dA" },
+      { name: "Costela de bacurim", description: "Costela suína assada lentamente regada com barbecue de abacaxi. Acompanha batata corte rústico temperadas com tempero do chef e porção de arroz branco", price: "89,90", color: "#A0522D", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjxXYWaNi9lDQffhSMmrejTrTCp00BIgG8ZAoO5Gyfl4mxmTVB5SwEr3c2yQtVUqMWR4YnjFB-PcCELTYeDlHE_KeByscdazAPqCjTlNWEGlCKM07NOT_Q5SaVNGwvWrX6SlNTTYyU-iU6istpVGTnWaObyHZCgUFIVRuw3Ga8pcEaiy51Q1qRlifjRioU" },
+      { name: "Macarrão do Véi", description: "Massa bavetti com molho especial de filé de sol na nata, gratinado com queijo", price: "54,90", color: "#9B6B47", image: "https://blogger.googleusercontent.com/img/a/AVvXsEiSL-IArbE1s2cHUq2ncvd_vJoJYIrG-TLjWT0a-9BDhCAFtnrfGYG11Y1Fy0BKGiq7JrwkCbWew0FFzhgHJpaTDyiWM4xA7ZAsoQQeiSG9M-8RqCnD2T9bmuIix2ikn1T0DYlEPsMfMGD8vTg0_-eiARx1nb_s0ofqqkjT7X84-YNECBnStschPeLlzxE" },
+      { name: "AVES", isSection: true },
+      { name: "Frango à parmegiana", description: "Filé de frango empanado com cama de molho de tomate italiano e gratinado de mussarela servido com massa italiana", price: "39,90", color: "#D4956A", image: "https://blogger.googleusercontent.com/img/a/AVvXsEifxgqc-ytL2Wy5sa1xh-AHyI7szOSQCFamEI1YUqF2FKWRYtTWBuaA8Or0PkDgSdtQoZSJgO_mMX1IHDqsNh4cYj6fmarP7T03gl6BXVNzyagMPmCG2iG4z0IpMOXIcovOSC_HOSmmfTgAOE8axOTZnhgAd9fVR5o7KOqu8jMs_Pt3-M3F282sslwCgu4" },
+      { name: "Franguim magrim", description: "Filé de frango marinado e grelhado na chapa e servido com arroz branco e mix salada crua", price: "39,90", color: "#E8A87C", image: "https://blogger.googleusercontent.com/img/a/AVvXsEhoI7MLRIqgzgIe-RjMJa14j1u5YzfYiJXGT4IW2z728vjrKcZ2skc4PCkKTEHsJqrWeCxVj9QRcBMuWWuL337P_svj78Kc2BS8XJC2W7NmVjosw7JGO59kHKQy5JjdgjnU9IzJIls9AAAhTAQ3SRqImF7LB2X3hbC91OsbCzRC3wXUoly3NZdxmFPpMjk" },
+      { name: "Frango atropelado", description: "Filé de frango marinado e grelhado na chapa e servido com arroz branco e mix salada crua", price: "39,90", color: "#E8A87C", image: "https://blogger.googleusercontent.com/img/a/AVvXsEgDT-brLutqL01LdGCoB6n_6dIrfFuXJ7nRx0jWu3bAkLittm57ezLzsamyDiJHpKCixpHfYUSKBxKBmwTv8DUCWDKYu3bpvtqQjmJpoIHu2LX4sLMe5gNNqP7D8XcppQxrPhc--NxUktn0qWVuARFIQ2oY4w9DG9BjYEhUaYlYAPWeOJz7gZ9vMRsX_HM" },
+      { name: "FRUTOS DO MAR", isSection: true },
+      { name: "Camarão parmegiana", description: "Camarões empanados fritos com molho de tomate da casa, gratinados com queijo servidos com massa bavetti", price: "79,90", color: "#E8B878", image: "https://blogger.googleusercontent.com/img/a/AVvXsEhXIHh0co32HOS3XuToZpNKPgl6zYwoV7UnopSmmSgx_LyTZKBrRi2KdD1-X1NRHKP9d1nhGDVQz5tNW7d_KHM5WD5FI2cjblfux2dVIuWkufSL1r8QdZAVDyGw9WN_1Iol0Ehpu74sDow4JOHjxoxlF0NqecdCYVmpZUNLC87Q8OYheWdMuGaTC75A0_0" },
+      { name: "Cumê de rico", description: "Arroz cremoso ao molho branco, puxado com camarões salteados e camarões empanados", price: "99,90", color: "#F0B874", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjfMB3XncrLW7MVPrEL3iHjf0RxTHFueRlhpUD0yyy9eF_kLroOcWsKDpZCOCJGSM45EmM2yT2SCuQKr5WYMMtyMZuxQszBNlYieK5hYUBnlA-f7E8saHtOCWPiJruRMMkdvrG97xYuv5_c_IvTdGmAmiCzPmP6gSrAtE28L1LeiEq7WEW-Ola8HBnsjUs" },
+      { name: "Macarrão al limone", description: "Massa bavetti com camarões selecionados grelhados, envoltos com molho cítrico", price: "59,90", color: "#E8B878", image: "https://blogger.googleusercontent.com/img/a/AVvXsEhf_vd9NXLGmnchoZSo4R4FnhiP6hc2DE6f73yA430hdvNKqSkCbhtLnBF-O_EyhIOLkRQ880fMT63nJPf8mnV2LAlJTtVCrfWU1-Aa5L9OO6lJDkz9f4kq6Ev5NPzLBpztVPnGw_eLJNRU9SJsh1hQrIad_dOvmP7D60GELwTFp96NJ_Mf6BnLTfKJ-dE" },
+      { name: "Peixe à delicia", description: "Filé de peixe crocante intercalado com fatias finas de banana frita, queijo, coberto com molho branco e gratinado. Acompanha arroz com brócolis", price: "59,90", color: "#F0B874", image: "https://blogger.googleusercontent.com/img/a/AVvXsEgI38aDq3AQz5yI2gnZKvW_lBpWOBeh0X4tgwmy0jWbG9Sd_Fpw1_T7UYaUr5WYaTZJabx1zIpx1hriyW6QrY5xpXk0RazEpNAcU_Saqe5-1vssb86PW5xKb9WYVLj7hswXDC2wYdWhp4UzE19WM8styUQbk5JIkBQQqdmFasSSaKXT1kycj5vVEMqT1UQ" },
+      { name: "Peixe ao pesto", description: "Filé de peixe levemente empanado no fubá de milho, frito, coberto com molho pesto, arroz branco e batatas souté", price: "49,90", color: "#F0B874", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjy9Mwe4ko6ADy74Lgno_fs0PVMEZekprC6J_a2kZTLOS-TYHKCj9SWVEVzQ24gFLPFAVpzGJS-DDCrmlGUuoLZnURbq-l_GUk0B4nTivtqRqwtqub6ZgDQSXfl-MqeGqL5bNJXEhP-hS7z4E6WqfJnoJAJK30cPxXhQpn4HawfmCFgnZAIh6WYlxrRzCA" },
+      { name: "PORÇÕES", isSection: true },
+      { name: "Arroz à Piemontese", description: "Arroz cremoso com blend de queijos e tempero especial", price: "19,90", color: "#E8C458", image: "https://blogger.googleusercontent.com/img/a/AVvXsEi-BaogGscnviuh28kQcgg3mNX6ubyw_n4VUHSUAMojx_sVCUpNag7U8LYxQ1l07hSXzidYNXSt0uyQRFXGYGKRaymZryKVYVt5KiAgWLJaNcBJWC3a3lZdCLznk9UT6TcKo4LI5yETFtB3vo3Ti6ltcio5eXWNym0dJZVoemrFznpVY51vkHX2Nu9mj0Q" },
+      { name: "Arroz branco", description: "Arroz branco fluffy e macio", price: "12,90", color: "#F0E6D2", image: "https://blogger.googleusercontent.com/img/a/AVvXsEig9CHgibhZwnTitt6kEifh9xNWzelxKodPvSqVaDX4qVKyymknKonOnnE-vw-j5APMGae-WFYxBrYcWWAUHRjsq98Lh8REXztuZUQfzpa671rkP5zEzYyqbH2rHjKQdts_gmvZJ3gmsN0O4ggonMD0WT7_wUkbtQepV-QujYKJxYubG7V5Kvky5onhs9A" },
+      { name: "Baião de dois ao leite", description: "Tradicional baião de dois preparado ao leite cremoso", price: "19,90", color: "#D4A574", image: "https://blogger.googleusercontent.com/img/a/AVvXsEhOGGXni0Jc4lFmKP4fM3Es8hbPPlxCI3LIyuEa4UI36W1BLkgOLQqcb0b5iegmyxChgXBZtSZoCEmR4D-SE1Lag50vsp-JUrjKgJPbMnID41uG29XRO8hn1FmnMo2y2Guo37QLEbVrOP1WCBYxXghkM5y1yCHU0G57-2gmQKCTqqfOtj9P5IZ38rWu1uI" },
+      { name: "Massa bavetti", description: "Massa bavetti com molho vermelho ou branco a escolher", price: "19,90", color: "#E8B878", image: "https://blogger.googleusercontent.com/img/a/AVvXsEhwYfiT8-M9p7tfG0YFSs2NBBlyw-DHzstxZqAHkX4vXXb1xG5n08kngjrHlR8_Y-Z9k-vOEclg_UEhLFbuBrbJR62ke8mokUHMMWBTaCpAGfwsa2V2962jqL21trBKZo7Kgi5ehUJmLAgIJZb8pUrx0duygdgNkpU3lLydZvwlGf4BgZNOuUer9zHQqWg" },
+      { name: "Macaxeira cremosa", description: "Macaxeira cremosa com tempero especial", price: "19,90", color: "#F0D99F", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjK78JIHlCEC0gS9JQpalYMUZQvL6F6oPV3CW4Bhgo_XJJ9HCbG2kEeoTH3_AHeu8KFF2xvQ_dJwwAw7rhuwbI9vVDJr0JtQDjKAndK9tjwTGy6p8tzh6VBMRqp1SSo0X2Raw_sc6UqCJmU2f1-NapM6U3jr6ciNqGVfLPgNwMq-gwk48Z51xQDNQbuB9M" },
+      { name: "Farofa ou vinagrete", description: "Farofa ou vinagrete a escolher", price: "9,90", color: "#E8C458", image: "https://blogger.googleusercontent.com/img/a/AVvXsEj-fC3NoiF6V91gXf8IbhPAD5MKnDcGQpElc0Sew3tvv6mOJg6NxW212ltLv0vYMXZ3rXBYDO8zuiK7XhSbddk3DjkinIfzmIGp58u3AMbB43S7ZN7boghIno686RGLqkzy-z1K6fVBesZuw9SWHhdjIF0Zd6KdwymEkFYj45whIeePVeTntXytiuf-tXA" },
+      { name: "NOSSAS SOBREMESAS", isSection: true },
+      { name: "Dirmantelo de Goiabada", description: "Brûlée de creme de queijo de manteiga com calda de goiabada, crumble de biscoito e castanha de caju", price: "32,90", color: "#D4736F", image: "https://blogger.googleusercontent.com/img/a/AVvXsEiuCvBnZeKTwvH8kHhIDOntqHQQ0QD8oKQzmtDxgvRM1BQQ1-Bo6KDeo-oUG2dwNeJhYMWd7xZsPDt-OIZGoYYD9RIL6AqLSZ3Eks87KG7SzpPuFqgSZzW7Ne22xJxOn3h7Jk84Vut7-WWnHyIX-8XtCBzj6Z7lqPHuQyjU1HItc6NHButMJkoDycKgSHc" },
+      { name: "Pudim Matuto", description: "Nossa tradicional receita de pudim feito com leite de coco e calda de rapadura", price: "39,90", color: "#D4A574", image: "https://blogger.googleusercontent.com/img/a/AVvXsEgtpCVp4EPrvRJN0a903T3TtAgrd7piX0oM62k4TtnwEu4FFxM7ynjvDeO_7TyX2IEN4ZCkSAhgsQ-b09mBXFJ_uiUrv6GCdSRDkJlebvP56Qvg6XLTsv96wF1mp2yH9y6izxUkmPM90-o6fqwv6bfmZX8OqEFfZIwRdDNmxcG9i0bbxY7o5lw7WTSJTAw" },
+
+      { name: "Bagaceira de Chocolate", description: "Gran Gateau de chocolate com picolé crocante", price: "32,90", color: "#6B4423", image: "https://blogger.googleusercontent.com/img/a/AVvXsEicuEdXhKjU5kQUDvW4bSuD40pX0Bn14Jyp-EThMLmOniR5DIQf2zO5eul-IpGvCl8CykzcAIQof09FKvKEf_B5nW-YhM3exsyELIDfdqm15C_d7Wum6wpU2d8uGu2FDSteiqHH_O-Lh8I4csydPjUsY6MK_hJBc-dIEugq4xF-gUPqa7a-CeFedObJXPE" },
+
+      { name: "Cocada Quente", description: "Cocada cremosa assada ao forno com brûlée e sorvete de creme", price: "34,90", color: "#E8C458", image: "https://blogger.googleusercontent.com/img/a/AVvXsEhYFuFlld580jTheufZA-sTb99jzJsSUTpmh5II1LU9BN4FWc7LQdYoZYAnQBsCJl1tQ2h65FRzrdlZIApo-5a3VdVHA6VTQCnmVD43my5BDx2aCTmL8xAUyoN8PRzwX1l3RDAcP6suw9xDHsksAkgCNCMj4e2gtrhTo6GG7VjnIjVOgr56VEIJyLDYEEI" },
+
+      { name: "Mil folhas Nutella", description: "Lâminas de massa folheada, intercaladas com Nutella e banana flambada. Acompanha sorvete de creme", price: "32,90", color: "#8B6F47", image: "https://blogger.googleusercontent.com/img/a/AVvXsEi_nlTDHkK7esG9zXnOfxC7HpMHvjq-wi7575fpLwvW925AszRGmR-kwR639Ii0RTn5qdMP7U_Gp305U2O0TcjUieedQiPlS4AdPCUlIOeOQx-L88JIOyG1C9UasgemUvfR_dV9ZmqteyoF_jWS0pqu0en-KSwtP-MKJV7DPIMwYCvlzK8QUgYYYgdlUI4" },
+
+      { name: "Mil folhas Doce de Leite", description: "Lâminas de massa folheada intercaladas com doce de leite e geleia de maçã. Acompanhadas de sorvete de creme", price: "32,90", color: "#C4956A", image: "https://blogger.googleusercontent.com/img/a/AVvXsEjZDy2u1jLc8DyfAyaGj5GzqwoDnk-meo8UjnWtRxKnXd08jb9liV3pDCJ_6cWPe6cTxsYq-qgkhkAd9k1L7FdGH81DdJwkZHRGizgP7TpHvHfi7AoS04nXfZUIFYdvPBTjBEHV0G_9i-WXbenkrKLLoFZRDJEsM0o_aTbTGD8O3J1QzqIrDVpjF_J0qiE" },
+
+    ];
+
     const defaultConfig = {
-      hero_title: 'Acesso Exclusivo Multimídia',
-      hero_subtitle: 'Músicas organizadas, prontas para seu pendrive automotivo.',
-      card_title: 'Área do Membro',
-      button_text: 'Desbloquear Conteúdo',
-      background_color: '#0a0a0f',
-      surface_color: '#1a0a2e',
-      text_color: '#ffffff',
-      primary_color: '#6366f1',
-      accent_color: '#a855f7'
+      background_color: "#FFFFFF",
+      text_color: "#2a2a2a",
+      accent_color: "#D4AF37",
+      secondary_text_color: "#999999",
+      font_family: "Cormorant Garamond",
+      font_size: 16,
+      category_title: "ENTRADAS",
+      restaurant_name: ""
     };
-    
-    let config = { ...defaultConfig };
-    
-    async function onConfigChange(newConfig) {
-      config = { ...config, ...newConfig };
-      
-      const heroTitle = document.getElementById('hero-title');
-      if (heroTitle) {
-        heroTitle.textContent = config.hero_title || defaultConfig.hero_title;
-        const textColor = config.text_color || defaultConfig.text_color;
-        const primaryColor = config.primary_color || defaultConfig.primary_color;
-        const accentColor = config.accent_color || defaultConfig.accent_color;
-        heroTitle.style.background = `linear-gradient(135deg, ${textColor} 0%, ${accentColor} 30%, ${primaryColor} 60%, #ec4899 100%)`;
-        heroTitle.style.webkitBackgroundClip = 'text';
-        heroTitle.style.webkitTextFillColor = 'transparent';
-        heroTitle.style.backgroundClip = 'text';
-      }
-      
-      const heroSubtitle = document.getElementById('hero-subtitle');
-      if (heroSubtitle) {
-        heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
-      }
-      
-      const cardTitle = document.getElementById('card-title');
-      if (cardTitle) {
-        cardTitle.textContent = config.card_title || defaultConfig.card_title;
-      }
-      
-      const buttonText = document.getElementById('button-text');
-      if (buttonText) {
-        const currentIcon = buttonText.querySelector('svg');
-        buttonText.innerHTML = '';
-        if (currentIcon) buttonText.appendChild(currentIcon);
-        buttonText.appendChild(document.createTextNode(' ' + (config.button_text || defaultConfig.button_text)));
-      }
-      
-      const primaryColor = config.primary_color || defaultConfig.primary_color;
+
+    function renderMenuItems(config) {
+      const container = document.getElementById('menu-items');
+      const textColor = config.text_color || defaultConfig.text_color;
+      const secondaryColor = config.secondary_text_color || defaultConfig.secondary_text_color;
       const accentColor = config.accent_color || defaultConfig.accent_color;
-      const bgColor = config.background_color || defaultConfig.background_color;
-      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+
+      let html = '';
       
-      const bgElement = document.querySelector('.gradient-animate');
-      if (bgElement) {
-        bgElement.style.background = `linear-gradient(135deg, ${bgColor} 0%, ${surfaceColor} 25%, #16213e 50%, #0f1419 75%, ${bgColor} 100%)`;
-      }
+      // Add navigation buttons at the very start
+      html += `
+        <div class="flex justify-center gap-6 mb-12">
+          <a href="https://zerotofamebr.github.io/adegainv-/" target="_blank" rel="noopener noreferrer" class="px-6 py-2 font-body text-sm font-light tracking-wide transition-all duration-300 border border-gray-300 hover:border-gray-500 hover:text-gray-700" style="color: #666666;"> Vinhos </a> 
+          <a href="https://zerotofamebr.github.io/bebidasinv-/" target="_blank" rel="noopener noreferrer" class="px-6 py-2 font-body text-sm font-light tracking-wide transition-all duration-300 border border-gray-300 hover:border-gray-500 hover:text-gray-700" style="color: #666666;"> Bebidas </a>
+        </div>
+      `;
       
-      const submitBtn = document.getElementById('submit-btn');
-      if (submitBtn) {
-        submitBtn.style.background = `linear-gradient(135deg, ${primaryColor}, #8b5cf6, ${accentColor})`;
-      }
+      html += menuData.map((item, index) => {
+        // Check if this is the ENTRADAS section
+        if (item.isSection && item.name === "ENTRADAS") {
+          // Render the section title without the buttons
+          let sectionHtml = `
+            <div class="section-title mt-16 mb-8 pt-8 border-t border-gray-300">
+              <h2 class="font-display font-normal tracking-widest text-3xl md:text-4xl" 
+                  style="color: ${textColor}; font-family: '${fontFamily}', serif; font-size: ${fontSize * 2.5}px;">
+                ${item.name}
+              </h2>
+            </div>
+          `;
+          
+          return sectionHtml;
+        }
+        
+        // Render other sections normally
+        if (item.isSection) {
+          return `
+            <div class="section-title mt-16 mb-8 pt-8 border-t border-gray-300">
+              <h2 class="font-display font-normal tracking-widest text-3xl md:text-4xl" 
+                  style="color: ${textColor}; font-family: '${fontFamily}', serif; font-size: ${fontSize * 2.5}px;">
+                ${item.name}
+              </h2>
+            </div>
+          `;
+        }
+        
+        // Render menu items
+        return `
+        <div class="menu-item flex gap-6 items-start pb-6 border-b border-gray-200" style="margin-bottom: 1.5rem;">
+          <!-- Image -->
+          <div class="flex-shrink-0">
+            <div class="w-32 h-32 md:w-40 md:h-40 rounded-lg overflow-hidden relative" style="background: ${item.color}; opacity: 1;">
+              ${item.image ? 
+                `<img src="${item.image}?w=200&q=75" alt="${item.name}" class="w-full h-full object-cover" loading="lazy" decoding="async" srcset="${item.image}?w=160&q=75 160w, ${item.image}?w=200&q=75 200w" onerror="this.style.display='none'; this.parentElement.style.background='${item.color}';">` :
+                ``
+              }
+            </div>
+          </div>
+          <!-- Content -->
+          <div class="flex-1 pt-1">
+            <h3 class="font-display font-normal tracking-wide mb-2 transition-colors duration-300" 
+                style="color: ${textColor}; font-family: '${fontFamily}', serif; font-size: ${fontSize * 1.3}px;">
+              ${item.name}
+            </h3>
+            <p class="font-body text-sm font-light leading-relaxed mb-3" 
+               style="color: ${secondaryColor}; font-size: ${fontSize * 0.85}px; white-space: normal; word-wrap: break-word;">
+              ${item.description.replace(/\n/g, '<br>')}
+            </p>
+            <!-- Price -->
+            <div class="flex items-center gap-3">
+              <span class="font-display font-light" 
+                    style="color: ${accentColor}; font-family: '${fontFamily}', serif; font-size: ${fontSize * 1.2}px;">
+                R$${item.price}
+              </span>
+            </div>
+          </div>
+        </div>
+      `;
+      }).join('');
       
-      const genreTags = document.querySelectorAll('.genre-tag');
-      genreTags.forEach(tag => {
-        tag.style.color = accentColor;
-      });
-      
-      const lockIcon = document.getElementById('lock-icon');
-      if (lockIcon) {
-        lockIcon.setAttribute('stroke', accentColor);
-      }
+      container.innerHTML = html;
     }
-    
-    function mapToCapabilities(cfg) {
+
+    async function onConfigChange(config) {
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const secondaryColor = config.secondary_text_color || defaultConfig.secondary_text_color;
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+
+      // Background
+      document.getElementById('menu-container').style.backgroundColor = bgColor;
+
+      // Category title
+      const titleEl = document.getElementById('category-title');
+      titleEl.textContent = config.category_title || defaultConfig.category_title;
+      titleEl.style.color = textColor;
+      titleEl.style.fontFamily = `'${fontFamily}', serif`;
+      titleEl.style.fontSize = `${fontSize * 3.5}px`;
+
+      // Restaurant name
+      const restaurantEl = document.getElementById('restaurant-name');
+      restaurantEl.textContent = config.restaurant_name || defaultConfig.restaurant_name;
+      restaurantEl.style.color = secondaryColor;
+      restaurantEl.style.fontFamily = `'${fontFamily}', serif`;
+      restaurantEl.style.fontSize = `${fontSize * 1.5}px`;
+
+      // Divider
+      document.getElementById('divider').style.color = accentColor;
+
+      // Render menu items
+      renderMenuItems(config);
+    }
+
+    function mapToCapabilities(config) {
       return {
         recolorables: [
           {
-            get: () => cfg.background_color || defaultConfig.background_color,
+            get: () => config.background_color || defaultConfig.background_color,
             set: (value) => {
-              cfg.background_color = value;
-              if (window.elementSdk) window.elementSdk.setConfig({ background_color: value });
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
             }
           },
           {
-            get: () => cfg.surface_color || defaultConfig.surface_color,
+            get: () => config.text_color || defaultConfig.text_color,
             set: (value) => {
-              cfg.surface_color = value;
-              if (window.elementSdk) window.elementSdk.setConfig({ surface_color: value });
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
             }
           },
           {
-            get: () => cfg.text_color || defaultConfig.text_color,
+            get: () => config.accent_color || defaultConfig.accent_color,
             set: (value) => {
-              cfg.text_color = value;
-              if (window.elementSdk) window.elementSdk.setConfig({ text_color: value });
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
             }
           },
           {
-            get: () => cfg.primary_color || defaultConfig.primary_color,
+            get: () => config.secondary_text_color || defaultConfig.secondary_text_color,
             set: (value) => {
-              cfg.primary_color = value;
-              if (window.elementSdk) window.elementSdk.setConfig({ primary_color: value });
-            }
-          },
-          {
-            get: () => cfg.accent_color || defaultConfig.accent_color,
-            set: (value) => {
-              cfg.accent_color = value;
-              if (window.elementSdk) window.elementSdk.setConfig({ accent_color: value });
+              config.secondary_text_color = value;
+              window.elementSdk.setConfig({ secondary_text_color: value });
             }
           }
         ],
         borderables: [],
-        fontEditable: undefined,
-        fontSizeable: undefined
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
       };
     }
-    
-    function mapToEditPanelValues(cfg) {
+
+    function mapToEditPanelValues(config) {
       return new Map([
-        ['hero_title', cfg.hero_title || defaultConfig.hero_title],
-        ['hero_subtitle', cfg.hero_subtitle || defaultConfig.hero_subtitle],
-        ['card_title', cfg.card_title || defaultConfig.card_title],
-        ['button_text', cfg.button_text || defaultConfig.button_text]
+        ["category_title", config.category_title || defaultConfig.category_title],
+        ["restaurant_name", config.restaurant_name || defaultConfig.restaurant_name]
       ]);
     }
-    
-    if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange,
-        mapToCapabilities,
-        mapToEditPanelValues
-      });
-    }
-    
-    // ========================================
-    // LÓGICA DE VALIDAÇÃO DE CÓDIGO
-    // ========================================
-    
-    const form = document.getElementById('access-form');
-    const codeInput = document.getElementById('access-code');
-    const feedback = document.getElementById('feedback');
-    const feedbackText = document.getElementById('feedback-text');
-    
-    function showFeedback(message, isSuccess) {
-      feedback.classList.remove('hidden');
-      feedbackText.textContent = message;
-      feedbackText.className = isSuccess 
-        ? 'text-base font-medium text-emerald-400' 
-        : 'text-base font-medium text-rose-400';
-      
-      if (!isSuccess) {
-        codeInput.classList.add('shake');
-        codeInput.style.borderColor = 'rgba(239, 68, 68, 0.6)';
-        setTimeout(() => {
-          codeInput.classList.remove('shake');
-          codeInput.style.borderColor = 'rgba(99, 102, 241, 0.2)';
-        }, 500);
-      }
-    }
-    
-    function hideFeedback() {
-      feedback.classList.add('hidden');
-    }
-    
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const code = codeInput.value.trim().toUpperCase();
-      
-      if (!code) {
-        showFeedback('Por favor, insira um código de acesso.', false);
-        return;
-      }
-      
-      if (accessCodes[code]) {
-        showFeedback('���� Código válido! Redirecionando...', true);
-        
-        const lockIcon = document.getElementById('lock-icon');
-        if (lockIcon) {
-          lockIcon.innerHTML = `
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-            <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
-          `;
-        }
-        
-        setTimeout(() => {
-          window.open(accessCodes[code], '_blank', 'noopener,noreferrer');
-        }, 1000);
-      } else {
-        showFeedback('Código inválido. Verifique e tente novamente.', false);
-        
-      }
-    });
-    
-    codeInput.addEventListener('input', hideFeedback);
-    
-    codeInput.focus();
-    
-    // ========================================
-    // PROTEÇÃO TOTAL DO VÍDEO + AUTOPLAY
-    // ========================================
-    
-    const videoIframe = document.getElementById('youtube-video');
-    const videoProtection = document.getElementById('video-protection');
-    
-    // Bloqueia clique direito em toda a página
-    document.addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-      return false;
-    });
-    
-    // Bloqueia todos os cliques no vídeo
-    if (videoProtection) {
-      videoProtection.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      });
-      
-      videoProtection.addEventListener('mousedown', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      });
-      
-      videoProtection.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-      });
-    }
-    
-    // Bloqueia atalhos de teclado perigosos
-    document.addEventListener('keydown', function(e) {
-      // Bloqueia Ctrl+Shift+C (DevTools)
-      if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
-        e.preventDefault();
-        return false;
-      }
-      // Bloqueia F12 (DevTools)
-      if (e.keyCode === 123) {
-        e.preventDefault();
-        return false;
-      }
-      // Bloqueia Ctrl+U (View Source)
-      if (e.ctrlKey && e.keyCode === 85) {
-        e.preventDefault();
-        return false;
-      }
-      // Bloqueia Ctrl+S (Salvar)
-      if (e.ctrlKey && e.keyCode === 83) {
-        e.preventDefault();
-        return false;
-      }
-    });
-    
-    // Remove qualquer link do YouTube que apare��a
-    setInterval(function() {
-      const ytLinks = document.querySelectorAll('a[href*="youtube.com"], a[href*="youtu.be"]');
-      ytLinks.forEach(link => {
-        link.style.pointerEvents = 'none';
-        link.style.display = 'none';
-      });
-    }, 100);
-    
-    // FORÇA O PLAY DO VÍDEO automaticamente após 2 segundos
-    setTimeout(function() {
-      if (videoIframe && videoIframe.contentWindow) {
-        // Envia comando para dar play via API do YouTube
-        videoIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-      }
-    }, 2000);
 
+    // Initialize
+    onConfigChange(defaultConfig);
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bc47dd86717f61b',t:'MTc2ODEzNTMyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9dae0aaf67990b0d',t:'MTc3MzI2ODYyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
